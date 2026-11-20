@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diario de Fuerza · Gana músculo aunque te cueste ganar peso</title>
+<meta name="description" content="La app en español para mujeres delgadas que quieren ganar músculo: rutina guiada, comida sin contar calorías y progreso real. Apúntate como probadora.">
+<meta property="og:title" content="Diario de Fuerza · Gana músculo aunque te cueste ganar peso">
+<meta property="og:description" content="Rutina guiada, comida sin contar calorías y progreso real. Buscamos las primeras 20 probadoras.">
+<meta name="theme-color" content="#0e1011">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1011;--card:#16191b;--card2:#1c2023;--line:#272c2f;--text:#eef0ea;--muted:#9aa19e;--acc:#c8f53a;--ink:#141a02;--warm:#ff8a3d;--ok:#5fd38d;--r:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Barlow,system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:var(--acc)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.5px;line-height:1.02;margin:0}
+h1{font-size:clamp(44px,7vw,78px)}
+h2{font-size:clamp(32px,4.5vw,46px);margin-bottom:14px}
+h3{font-size:22px;margin-bottom:6px}
+.acc{color:var(--acc)}
+.muted{color:var(--muted)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:"Barlow Condensed";font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;color:var(--text)}
+.logo span{color:var(--acc)}
+.logo,.btn.sm{white-space:nowrap}
+@media(max-width:420px){.logo{font-size:20px}.btn.sm{padding:8px 11px;font-size:14px}}
+.btn{display:inline-block;background:var(--acc);color:var(--ink);font-weight:600;font-size:17px;padding:14px 22px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.sm{padding:9px 14px;font-size:15px}
+/* Hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:40px 0 70px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:20px}}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--muted);margin-bottom:18px}
+.lead{font-size:20px;color:#cfd4cf;max-width:560px;margin:18px 0 26px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.small{font-size:14px;color:var(--muted)}
+/* Teléfono */
+.phone{width:min(330px,88vw);margin:0 auto;background:#0b0d0e;border:10px solid #23272a;border-radius:42px;padding:18px 14px 22px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px #2e3336}
+.ph-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px}
+.ph-title{font-family:"Barlow Condensed";font-weight:700;font-size:22px;text-transform:uppercase;line-height:1}
+.ph-chip{font-size:10px;border:1px solid #2b4a37;color:var(--ok);border-radius:99px;padding:3px 7px}
+.ph-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px;margin-bottom:9px;font-size:13px}
+.ph-h{font-family:"Barlow Condensed";font-weight:600;text-transform:uppercase;font-size:14px;letter-spacing:.4px;margin-bottom:6px}
+.ph-tip{background:var(--card2);border-radius:9px;padding:7px 9px;margin-bottom:6px;line-height:1.35}
+.ph-tip.warn{background:#2a2112;color:#ffcf9a}
+.ph-bal{display:flex;justify-content:space-between;text-align:center;margin:4px 0 6px}
+.ph-bal b{display:block;font-family:"Barlow Condensed";font-size:22px}
+.ph-bal small{font-size:9px;color:var(--muted);text-transform:uppercase}
+.bar{height:7px;background:var(--card2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}
+.ph-ex{display:flex;justify-content:space-between;align-items:center}
+.ph-ex .t{color:var(--acc);font-family:"Barlow Condensed";font-size:15px}
+/* Secciones */
+section{padding:70px 0;border-top:1px solid #1b1f21}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--card2);display:grid;place-items:center;font-size:24px;margin-bottom:12px}
+.pain{border-left:3px solid var(--warm)}
+.steps{counter-reset:s}
+.step{position:relative;padding-left:58px;margin-bottom:22px}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:42px;height:42px;border-radius:50%;background:var(--acc);color:var(--ink);font-family:"Barlow Condensed";font-weight:700;font-size:22px;display:grid;place-items:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{padding:7px 0 7px 30px;position:relative}
+ul.check li::before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:700}
+ul.cross li::before{content:"✕";color:var(--muted)}
+/* Formulario */
+form{display:grid;gap:16px}
+label{display:flex;flex-direction:column;gap:6px;font-size:15px;color:#cfd4cf}
+input[type=text],input[type=email],select,textarea{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit;font-size:16px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--acc)}
+fieldset{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0}
+legend{font-size:15px;color:#cfd4cf;padding:0 6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:inline-block;border:1px solid var(--line);background:var(--card2);border-radius:999px;padding:8px 14px;font-size:15px;cursor:pointer}
+.opt input:checked+span{border-color:var(--acc);color:var(--acc)}
+.opt input:focus-visible+span{outline:2px solid var(--acc)}
+.consent{flex-direction:row;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
+.consent input{margin-top:4px;accent-color:var(--acc)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.row2{grid-template-columns:1fr}}
+#msg{display:none;border-radius:12px;padding:16px;font-size:16px}
+#msg.ok{display:block;background:#14261b;border:1px solid #2b4a37;color:#a9e9c2}
+#msg.err{display:block;background:#2a1414;border:1px solid #5a2a2a;color:#ffb3b3}
+.hp{position:absolute;left:-5000px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+footer{padding:40px 0 60px;border-top:1px solid #1b1f21;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#">Diario de <span>Fuerza</span></a>
+    <a class="btn sm" href="#apuntate">Quiero probarla</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="tag">💪 Para mujeres delgadas que quieren ganar músculo</div>
+      <h1>Gana músculo aunque <span class="acc">te cueste ganar peso</span></h1>
+      <p class="lead">La app en español que te dice qué entrenar, cuánto comer sin contar calorías y si de verdad estás progresando. Todo en un solo sitio.</p>
+      <div class="cta-row">
+        <a class="btn" href="#apuntate">Apúntate como probadora</a>
+        <span class="small">Gratis durante la prueba · Buscamos 20 mujeres</span>
+      </div>
+    </div>
+
+    <div class="phone" aria-label="Vista de la app en un móvil">
+      <div class="ph-top"><div class="ph-title">Diario de <span class="acc">Fuerza</span></div><div class="ph-chip">Guardado</div></div>
+      <div class="ph-card">
+        <div class="ph-h">Avisos de hoy</div>
+        <div class="ph-tip">🏋️ Hoy toca <b>Lunes</b>: glúteo, espalda y hombro.</div>
+        <div class="ph-tip warn">🍽️ Son las 16:30 y llevas 1.050 kcal. Te toca la merienda.</div>
+        <div class="ph-tip">📈 Tu peso casi no sube: sube a 2.550 kcal.</div>
+      </div>
+      <div class="ph-card">
+        <div class="ph-bal"><div><b>1.950</b><small>Comido</small></div><div><b>1.870</b><small>Gastado</small></div><div><b class="acc">+80</b><small>Balance</small></div></div>
+        <div class="bar"><i style="width:78%"></i></div>
+      </div>
+      <div class="ph-card">
+        <div class="ph-ex"><b>Hip thrust con barra</b><span class="t">3×10</span></div>
+        <div class="muted" style="font-size:12px;margin-top:4px">Última: 40×10 · 40×10 · 40×10</div>
+        <div class="acc" style="font-size:12px">Lo completaste todo: sube a 45 kg</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section>
+  <div class="wrap">
+    <h2>¿Te suena?</h2>
+    <p class="muted" style="max-width:640px;margin:0 0 24px">Casi todas las apps de fitness están pensadas para perder peso. Si lo tuyo es lo contrario, te encuentras con esto:</p>
+    <div class="grid3">
+      <div class="card pain"><h3>“Como y no engordo”</h3><p class="muted" style="margin:0">Crees que comes mucho, pero no sabes si es suficiente para que el músculo crezca.</p></div>
+      <div class="card pain"><h3>“No sé qué rutina hacer”</h3><p class="muted" style="margin:0">Las rutinas que encuentras son para hombres o para “tonificar”, y no ves cambios.</p></div>
+      <div class="card pain"><h3>“Contar calorías es un rollo”</h3><p class="muted" style="margin:0">Buscar cuántas kcal tiene cada plato es tan pesado que acabas dejándolo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUCIÓN -->
+<section>
+  <div class="wrap">
+    <h2>Lo que hace <span class="acc">por ti</span></h2>
+    <div class="grid3" style="margin-top:22px">
+      <div class="card"><div class="ico">🏋️</div><h3>Rutina guiada</h3><p class="muted" style="margin:0">Full Body de 3 días pensada para mujeres, con más glúteo y sin agujetas extremas. Cada ejercicio explica cómo se hace y te dice cuándo subir peso.</p></div>
+      <div class="card"><div class="ico">🍽️</div><h3>Comida sin calculadora</h3><p class="muted" style="margin:0">Busca “lentejas” o “tortilla”, elige “un plato” o “una rebanada” y listo. Guarda tus comidas habituales y apúntalas con un toque.</p></div>
+      <div class="card"><div class="ico">📈</div><h3>Te avisa como un entrenador</h3><p class="muted" style="margin:0">Si no comes suficiente, si tu peso no sube o si un ejercicio se estanca, la app te dice qué cambiar.</p></div>
+      <div class="card"><div class="ico">⚖️</div><h3>Progreso real</h3><p class="muted" style="margin:0">Peso, medidas de cintura, cadera, muslo y brazo, y gráficas de fuerza. Ves el cambio antes de que lo note la báscula.</p></div>
+      <div class="card"><div class="ico">📲</div><h3>Conectada con tu iPhone</h3><p class="muted" style="margin:0">Importa tus pasos y la energía activa de la app Salud para saber cuánto gastas de verdad.</p></div>
+      <div class="card"><div class="ico">⏱️</div><h3>Pensada para el gimnasio</h3><p class="muted" style="margin:0">Temporizador de descanso, funciona sin conexión y se instala en el móvil como una app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA + PARA QUIÉN -->
+<section>
+  <div class="wrap two">
+    <div class="steps">
+      <h2>Cómo funciona</h2>
+      <div class="step"><h3>Entrenas</h3><p class="muted" style="margin:0">Abres la app, ves qué toca hoy y apuntas peso y repeticiones.</p></div>
+      <div class="step"><h3>Comes</h3><p class="muted" style="margin:0">Apuntas lo que comes con medidas de casa. La app compara lo que comes con lo que gastas.</p></div>
+      <div class="step"><h3>Progresas</h3><p class="muted" style="margin:0">Cada semana la app revisa tus datos y te dice si subir peso, comer más o descansar.</p></div>
+    </div>
+    <div>
+      <h2>¿Es para ti?</h2>
+      <ul class="check">
+        <li>Eres delgada y te cuesta ganar peso</li>
+        <li>Quieres más glúteo, piernas y forma, no solo “tonificar”</li>
+        <li>Vas o quieres ir al gimnasio 3 días por semana</li>
+        <li>Prefieres algo sencillo, en español y sin contar calorías a mano</li>
+      </ul>
+      <ul class="check cross" style="margin-top:14px">
+        <li>No es una app para perder peso ni hacer dieta</li>
+        <li>No sustituye a un profesional sanitario</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="apuntate">
+  <div class="wrap two">
+    <div>
+      <h2>Buscamos las primeras <span class="acc">20 probadoras</span></h2>
+      <p class="muted">La app ya funciona y la uso cada día. Ahora quiero saber si te sirve a ti. Si te apuntas:</p>
+      <ul class="check">
+        <li>La pruebas <b>gratis</b> durante un mes</li>
+        <li>Me cuentas qué te sobra y qué te falta</li>
+        <li>Tu opinión decide cómo será la versión final</li>
+      </ul>
+      <p class="small" style="margin-top:20px">Son 2 minutos. No te enviaré publicidad: solo el enlace para probarla y alguna pregunta sobre cómo te va.</p>
+    </div>
+
+    <div class="card">
+      <form id="form" novalidate>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row2">
+          <label>Nombre<input type="text" name="nombre" required autocomplete="given-name"></label>
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        </div>
+
+        <fieldset><legend>Edad</legend><div class="opts">
+          <label class="opt"><input type="radio" name="edad" value="18-24"><span>18–24</span></label>
+          <label class="opt"><input type="radio" name="edad" value="25-34"><span>25–34</span></label>
+          <label class="opt"><input type="radio" name="edad" value="35-44"><span>35–44</span></label>
+          <label class="opt"><input type="radio" name="edad" value="45+"><span>45 o más</span></label>
+        </div></fieldset>
+
+        <fieldset><legend>¿Qué quieres conseguir? (puedes marcar varias)</legend><div class="opts">
+          <label class="opt"><input type="checkbox" name="objetivo" value="Ganar músculo"><span>Ganar músculo</span></label>
+          <label class="opt"><input type="checkbox" name="objetivo" value="Ganar peso"><span>Ganar peso</span></label>
+          <label class="opt"><input type="checkbox" name="objetivo" value="Más glúteo y piernas"><span>Más glúteo y piernas</span></label>
+          <label class="opt"><input type="checkbox" name="objetivo" value="Ser más fuerte"><span>Ser más fuerte</span></label>
+        </div></fieldset>
+
+        <fieldset><legend>¿Cuántos días entrenas ahora?</legend><div class="opts">
+          <label class="opt"><input type="radio" name="dias" value="0"><span>Aún no entreno</span></label>
+          <label class="opt"><input type="radio" name="dias" value="1-2"><span>1–2</span></label>
+          <label class="opt"><input type="radio" name="dias" value="3"><span>3</span></label>
+          <label class="opt"><input type="radio" name="dias" value="4+"><span>4 o más</span></label>
+        </div></fieldset>
+
+        <fieldset><legend>¿Qué es lo que más te cuesta?</legend><div class="opts">
+          <label class="opt"><input type="radio" name="dificultad" value="Comer suficiente"><span>Comer suficiente</span></label>
+          <label class="opt"><input type="radio" name="dificultad" value="Saber qué rutina hacer"><span>Saber qué rutina hacer</span></label>
+          <label class="opt"><input type="radio" name="dificultad" value="Ser constante"><span>Ser constante</span></label>
+          <label class="opt"><input type="radio" name="dificultad" value="Ver si progreso"><span>Ver si progreso</span></label>
+        </div></fieldset>
+
+        <label>¿Usas alguna app ahora para entrenar o comer?<input type="text" name="apps_actuales" placeholder="Ej.: ninguna, MyFitnessPal, notas del móvil…"></label>
+
+        <fieldset><legend>Si te ayuda de verdad, ¿cuánto pagarías al mes?</legend><div class="opts">
+          <label class="opt"><input type="radio" name="precio" value="Nada"><span>Solo gratis</span></label>
+          <label class="opt"><input type="radio" name="precio" value="1-3"><span>1–3 €</span></label>
+          <label class="opt"><input type="radio" name="precio" value="3-5"><span>3–5 €</span></label>
+          <label class="opt"><input type="radio" name="precio" value="5-8"><span>5–8 €</span></label>
+        </div></fieldset>
+
+        <fieldset><legend>¿Qué móvil tienes?</legend><div class="opts">
+          <label class="opt"><input type="radio" name="movil" value="iPhone"><span>iPhone</span></label>
+          <label class="opt"><input type="radio" name="movil" value="Android"><span>Android</span></label>
+        </div></fieldset>
+
+        <label class="consent"><input type="checkbox" name="consentimiento" value="Sí" required>
+          <span>Acepto que se usen mis datos solo para contactarme sobre la prueba de la app, según la <a href="#privacidad">información de privacidad</a>.</span></label>
+
+        <button class="btn" type="submit" id="enviar">Quiero ser probadora</button>
+        <div id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap" style="max-width:780px">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto cuesta?</summary><p class="muted">Durante la prueba es gratis. Después habrá una versión de pago; tu respuesta en el formulario me ayuda a fijar un precio justo.</p></details>
+    <details><summary>¿Necesito saber de nutrición o de gimnasio?</summary><p class="muted">No. La rutina explica cada ejercicio y la comida se apunta con medidas de casa: un plato, un vaso, una rebanada.</p></details>
+    <details><summary>¿Funciona en Android?</summary><p class="muted">Sí, se usa desde el navegador y se puede instalar en la pantalla de inicio. La conexión con Salud por ahora es solo para iPhone.</p></details>
+    <details><summary>¿Dónde se guardan mis datos de la app?</summary><p class="muted">En la versión de prueba, tus entrenos, comidas y medidas se guardan solo en tu móvil. Nadie más los ve.</p></details>
+    <details><summary>¿Sustituye a un entrenador o nutricionista?</summary><p class="muted">No. Es una herramienta de seguimiento con recomendaciones generales. Si tienes alguna condición de salud, consulta antes con un profesional.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div id="privacidad" style="max-width:780px">
+      <h3 style="color:var(--text);margin-bottom:8px">Información de privacidad</h3>
+      <p><b>Responsable:</b> Romina Buigues · <a href="mailto:rb@rominabuigues.es">rb@rominabuigues.es</a>.<br>
+      <b>Finalidad:</b> gestionar la lista de probadoras de Diario de Fuerza y conocer tu opinión sobre la app.<br>
+      <b>Legitimación:</b> tu consentimiento, que puedes retirar cuando quieras.<br>
+      <b>Conservación:</b> hasta que termine la prueba o pidas que se borren.<br>
+      <b>Encargado del tratamiento:</b> el formulario se gestiona con Formspree, que almacena las respuestas.<br>
+      <b>Derechos:</b> puedes pedir acceso, rectificación o supresión escribiendo al email de arriba. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+    </div>
+    <p style="margin-top:24px">© <span id="y"></span> Diario de Fuerza · Hecho en la Comunitat Valenciana</p>
+  </div>
+</footer>
+
+<script>
+/* ⚠️ Pega aquí el enlace de tu formulario de Formspree (Formspree → tu formulario → "Integration"). */
+const FORM_ENDPOINT = "https://formspree.io/f/TU_ID";
+
+document.getElementById("y").textContent = new Date().getFullYear();
+const form = document.getElementById("form"), msg = document.getElementById("msg"), btn = document.getElementById("enviar");
+function show(text, ok){ msg.className = ok ? "ok" : "err"; msg.textContent = text; }
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const nombre = form.nombre.value.trim(), email = form.email.value.trim();
+  if(!nombre){ show("Escribe tu nombre.", false); form.nombre.focus(); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ show("Revisa el email: parece que no es correcto.", false); form.email.focus(); return; }
+  if(!form.consentimiento.checked){ show("Para apuntarte tienes que aceptar la información de privacidad.", false); return; }
+  if(FORM_ENDPOINT.includes("TU_ID")){ show("El formulario aún no está conectado: falta poner el enlace de Formspree en el código.", false); return; }
+
+  const datos = new FormData(form);
+  // Juntar las casillas de objetivo en un solo campo legible
+  const obj = datos.getAll("objetivo"); datos.delete("objetivo"); datos.append("objetivo", obj.join(", "));
+  datos.append("_subject", "Nueva probadora: " + nombre);
+
+  btn.disabled = true; btn.textContent = "Enviando…";
+  try{
+    const r = await fetch(FORM_ENDPOINT, { method:"POST", body:datos, headers:{ Accept:"application/json" } });
+    if(!r.ok) throw new Error(r.status);
+    form.reset();
+    show(`¡Gracias, ${nombre}! 💪 Te escribiré en los próximos días con el enlace para probar la app.`, true);
+    btn.textContent = "¡Apuntada!";
+  }catch(err){
+    show("No se ha podido enviar. Prueba otra vez en un momento o escribe a rb@rominabuigues.es.", false);
+    btn.disabled = false; btn.textContent = "Quiero ser probadora";
+  }
+});
+</script>
+</body>
+</html>
