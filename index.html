@@ -283,7 +283,7 @@ footer{padding:40px 0 60px;border-top:1px solid #1b1f21;font-size:14px;color:var
       <b>Finalidad:</b> gestionar la lista de probadoras de Diario de Fuerza y conocer tu opinión sobre la app.<br>
       <b>Legitimación:</b> tu consentimiento, que puedes retirar cuando quieras.<br>
       <b>Conservación:</b> hasta que termine la prueba o pidas que se borren.<br>
-      <b>Encargado del tratamiento:</b> el formulario se gestiona con Formspree, que almacena las respuestas.<br>
+      <b>Dónde se guardan:</b> en una hoja de cálculo privada de Google Drive (Google actúa como proveedor del servicio).<br>
       <b>Derechos:</b> puedes pedir acceso, rectificación o supresión escribiendo al email de arriba. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
     </div>
     <p style="margin-top:24px">© <span id="y"></span> Diario de Fuerza · Hecho en la Comunitat Valenciana</p>
@@ -291,8 +291,8 @@ footer{padding:40px 0 60px;border-top:1px solid #1b1f21;font-size:14px;color:var
 </footer>
 
 <script>
-/* ⚠️ Pega aquí el enlace de tu formulario de Formspree (Formspree → tu formulario → "Integration"). */
-const FORM_ENDPOINT = "https://formspree.io/f/TU_ID";
+/* ⚠️ Pega aquí la URL de tu Apps Script (termina en /exec). Las respuestas se guardan en tu hoja de Google Drive. */
+const SCRIPT_URL = "PEGA_AQUI_LA_URL_DEL_SCRIPT";
 
 document.getElementById("y").textContent = new Date().getFullYear();
 const form = document.getElementById("form"), msg = document.getElementById("msg"), btn = document.getElementById("enviar");
@@ -304,17 +304,16 @@ form.addEventListener("submit", async e => {
   if(!nombre){ show("Escribe tu nombre.", false); form.nombre.focus(); return; }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ show("Revisa el email: parece que no es correcto.", false); form.email.focus(); return; }
   if(!form.consentimiento.checked){ show("Para apuntarte tienes que aceptar la información de privacidad.", false); return; }
-  if(FORM_ENDPOINT.includes("TU_ID")){ show("El formulario aún no está conectado: falta poner el enlace de Formspree en el código.", false); return; }
+  if(!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){ show("El formulario aún no está conectado: falta poner la URL del script de Google en el código.", false); return; }
 
   const datos = new FormData(form);
   // Juntar las casillas de objetivo en un solo campo legible
   const obj = datos.getAll("objetivo"); datos.delete("objetivo"); datos.append("objetivo", obj.join(", "));
-  datos.append("_subject", "Nueva probadora: " + nombre);
 
   btn.disabled = true; btn.textContent = "Enviando…";
   try{
-    const r = await fetch(FORM_ENDPOINT, { method:"POST", body:datos, headers:{ Accept:"application/json" } });
-    if(!r.ok) throw new Error(r.status);
+    // Google Apps Script no permite leer la respuesta desde otra web (CORS), por eso se envía en modo "no-cors"
+    await fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", body:new URLSearchParams(datos) });
     form.reset();
     show(`¡Gracias, ${nombre}! 💪 Te escribiré en los próximos días con el enlace para probar la app.`, true);
     btn.textContent = "¡Apuntada!";
